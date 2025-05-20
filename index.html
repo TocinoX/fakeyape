@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+
+        aside {
+            overflow: hidden;
+            width: 100%;
+            height: calc(105% - 463px);
+            background: #4B1974;
+            background: linear-gradient(0deg,rgba(75, 25, 116, 1) 50%, rgba(116, 34, 132, 1) 100%);
+        }
+
+        .help-button {
+            position: absolute;
+            top: 30px;
+            right: 15px;
+            width: 100px;
+            padding: 8px 6px;
+            text-align: center;
+            color: #F3F4F3;
+            background-color: #8C3D99;
+            border-radius: 100px;
+        }
+        .qr {
+            width: 45%;
+            margin: 100px auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 6px;
+        }
+
+        .qr img {
+            width: 100%;
+        }
+
+        .balls {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            width: 65%;
+            margin: 48px auto;
+        }
+
+        .ball {
+            width: 12px;
+            height: 12px;
+            background-color: #EDECF2;
+            border-radius: 100%;
+        }
+
+        .keyboard {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding-bottom: 32px;
+            background: #fff;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .keyboard__title {
+            margin: 40px 0;
+            text-align: center;
+            color: #742384;
+        }
+
+        .keys {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3%;
+            margin: 0 auto;
+            width: 85%;
+            text-align: center;
+        }
+
+        .key {
+            width: 31.33%;
+            margin-bottom: 3%;
+            padding: 14px 0;
+            background-color: #EDECF2;
+            border-radius: 8px;
+
+        }
+
+        .key h2 {
+            margin: 0;
+            color: #39304E;
+        }
+
+        .key--static {
+            background-color: transparent;
+        }
+
+        .keyboard__answer {
+            margin-top: 32px;
+            text-align: center;
+            color: #46CEC0;
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <div class="help-button"><i class="fa-solid fa-headset fa-lg" style="margin-right: 5px;"></i> <small>Ayuda</small></div>
+        <div class="qr">
+            <img src="img/qr.png" alt="">
+        </div>
+    </aside>
+    <div class="keyboard">
+        <h2 class="keyboard__title">
+            Ingresa tu clave
+        </h2>
+        <div class="balls">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+        </div>
+        <div class="keys">
+            <div class="key" value="1">
+                <h2>1</h2>
+            </div>
+            <div class="key">
+                <h2>2</h2>
+            </div>
+            <div class="key">
+                <h2>3</h2>
+            </div>
+            <div class="key">
+                <h2>4</h2>
+            </div>
+            <div class="key">
+                <h2>5</h2>
+            </div>
+            <div class="key">
+                <h2>6</h2>
+            </div>
+            <div class="key">
+                <h2>7</h2>
+            </div>
+            <div class="key">
+                <h2>8</h2>
+            </div>
+            <div class="key">
+                <h2>9</h2>
+            </div>
+            <div class="key key--static">
+                <i class="fa-solid fa-fingerprint fa-2x" style="color: #A162A9;"></i>
+            </div>
+            <div class="key">
+                <h2>0</h2>
+            </div>
+            <div class="key key--static">
+                <i class="fa-solid fa-delete-left fa-2x" style="color: #928B9E;"></i>
+            </div>
+        </div>
+
+        <h4 class="keyboard__answer">¿OLVIDASTE TU CLAVE?</h4>
+    </div>
+
+    <script src="https://kit.fontawesome.com/1822c1a120.js"></script>
+    <script>
+        let password = 0;
+
+        const keyboardTitle = document.querySelector('.keyboard__title');
+        const ballsContainer = document.querySelector('.balls');
+        const keys = document.querySelectorAll('.key');
+        const balls = document.querySelectorAll('.ball');
+
+        let ocultado = false;
+        keys.forEach(key => {
+            key.addEventListener('click', function () {
+                if (!ocultado) {
+                    keyboardTitle.style.display = 'none';
+                    ballsContainer.style.display = 'flex';
+                    ocultado = true;
+                }
+
+                console.log(password);
+                balls[password].style.width = '16px';
+                balls[password].style.height = '16px';
+                balls[password].style.backgroundColor = '#544B67';
+                password++;
+
+                if(password == 6) window.location.href = 'app.html'
+            });
+        });
+    </script>
+</body>
+</html>

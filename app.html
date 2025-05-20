@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+
+        aside {
+            overflow: hidden;
+            width: 100%;
+            height: calc(105% - 295px);
+            color: #fff;
+            background: #4B1974;
+            background: linear-gradient(0deg,rgba(75, 25, 116, 1) 50%, rgba(116, 34, 132, 1) 100%);
+        }
+
+        .dashboard {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: #fff;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .info-box {
+            width: 90%;
+            margin: 0 auto;
+            margin-bottom: 15px;
+            padding: 20px;
+            color: #70257A;
+            box-shadow: 0px 3px 5px 3px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 45px;
+        }
+
+        .action-button {
+            width: 48%;
+            padding: 18px 0;
+            text-align: center;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #0FCBB3;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .action-button:first-child {
+            color: #0FCBB3;
+            background-color: #fff;
+            border: solid 2px #0FCBB3;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .user-name {
+            font-size: 18px;
+        }
+
+        .user-account {
+            padding: 3px 7px;
+            font-size: 12px;
+            color: #000;
+            background-color: #F3BC3B;
+            border-radius: 7px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 15px 40px;
+        }
+
+        .options:nth-of-type(1) {
+            margin-top: 0;
+        }
+
+        .option {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 55px;
+            height: 55px;
+            padding: 14px;
+            background-color: white;
+            border-radius: 35%;
+            box-shadow: 0px 3px 5px 3px rgba(0,0,0,0.1);
+        }
+
+
+        .option::after {
+            content: "Recargar celular";
+            position: absolute;
+            top: 65px;
+            left: 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .options:nth-of-type(1) .option:nth-of-type(2)::after {
+            content: "Yapear servicios";
+        }
+
+        .options:nth-of-type(1) .option:nth-of-type(3)::after {
+            content: "Promos";
+        }
+
+        .options:nth-of-type(1) .option:nth-of-type(4)::after {
+            content: "Código de aprobación";
+        }
+
+        .options:nth-of-type(2) .option:nth-of-type(1)::after {
+            content: "Créditos";
+        }
+
+        .options:nth-of-type(2) .option:nth-of-type(2)::after {
+            content: "Tienda";
+        }
+
+        .options:nth-of-type(2) .option:nth-of-type(3)::after {
+            content: "Dólares";
+        }
+
+        .options:nth-of-type(2) .option:nth-of-type(4)::after {
+            content: "Remesas";
+        }
+
+        .options:nth-of-type(3) .option:nth-of-type(1)::after {
+            content: "SOAT";
+        }
+
+        .options:nth-of-type(3) .option:nth-of-type(2)::after {
+            content: "Viajar en bus";
+        }
+
+        .options:nth-of-type(3) .option:nth-of-type(3)::after {
+            content: "Entradas";
+        }
+
+        .options:nth-of-type(3) .option:nth-of-type(4)::after {
+            content: "Ver más";
+        }
+
+        .option img {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .slider {
+            display: flex;
+            width: 200%;
+            padding: 0 10px;
+            padding-top: 50px;
+        }
+
+        .slide {
+            width: 320px;
+            margin-right: 15px;
+        }
+
+        .slide img {
+            width: 100%;
+        }
+
+        .indicators {
+            display: flex;
+            justify-content: center;
+        }
+
+        .indicator {
+            width: 7px;
+            height: 7px;
+            margin: 0 2px;
+            background-color: #9F5BAA;
+            border-radius: 100%;
+        }
+
+        .indicators .active{
+            width: 40px;
+            background-color: #FBF0FF;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <nav>
+            <i class="fa-regular fa-user fa-xl"></i>
+            <div class="user-info">
+                <span class="user-name">Hola, Diego Franc...</span>
+                <span class="user-account"><b>Gratis</b></span>
+            </div>
+            <div class="help-buttons">
+                <i class="fa-solid fa-headset fa-xl" style="margin-right: 7px;"></i>
+                <i class="fa-solid fa-bell fa-xl"></i>
+            </div>
+        </nav>
+        <div class="options">
+            <div class="option">
+                <img src="img/icono1.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono2.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono3.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono4.png" alt="">
+            </div>
+        </div>
+
+        <div class="options">
+            <div class="option">
+                <img src="img/icono5.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono6.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono7.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono8.png" alt="">
+            </div>
+        </div>
+
+        <div class="options">
+            <div class="option">
+                <img src="img/icono9.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono10.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono11.png" alt="">
+            </div>
+
+            <div class="option">
+                <img src="img/icono12.png" alt="">
+            </div>
+        </div>
+
+        <div class="slider">
+            <div class="slide">
+                <img src="img/slide 1.png">
+            </div>
+            <div class="slide">
+                <img src="img/slide 2.png">
+            </div>
+        </div>
+        <div class="indicators">
+            <div class="indicator"></div>
+            <div class="indicator active"></div>
+            <div class="indicator"></div>
+            <div class="indicator"></div>
+        </div>
+    </aside>
+    <div class="dashboard">
+        <div class="info-box info-cash">
+            <i class="fa-solid fa-eye fa-lg visible-cash-icon" style="margin-right: 5px;"></i> 
+            <span class="visible-cash-text"><b>Mostrar Saldo</b></span>
+            <span class="total-cash" style="float: right; display: none; color: black;">S/. 22 000.00</span>
+        </div>
+        <div class="info-box">
+            <i class="fa-solid fa-receipt fa-lg" style="margin-right: 7px;"></i>
+            <span><b>Mostrar Movimientos</b></span>
+            <i class="fa-solid fa-chevron-down" style="float: right;"></i>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-button">
+                <i class="fa-solid fa-qrcode" style="margin-right: 5px;"></i>
+                <span><b>ESCANEAR QR</b></span>
+            </button>
+            <button class="action-button">
+                <i class="fa-regular fa-paper-plane" style="margin-right: 7px;"></i>
+                <span><b>YAPEAR</b></span>
+            </button>
+        </div>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/1822c1a120.js"></script>
+    <script>
+        let cashContainer = document.querySelector('.info-cash');
+        let visibleCashIcon = document.querySelector('.visible-cash-icon');
+        let visibleCashText = document.querySelector('.visible-cash-text b');
+        let totalCash = document.querySelector('.total-cash');
+        let isCashVisible = false;
+
+        cashContainer.addEventListener('click', () => {
+            if(isCashVisible) {
+                visibleCashIcon.classList.replace("fa-eye-slash", "fa-eye");
+                totalCash.style.display = 'none';
+                visibleCashText.innerText = 'Mostrar Saldo';
+                isCashVisible = false;
+            } else {
+                visibleCashIcon.classList.replace("fa-eye", "fa-eye-slash");
+                totalCash.style.display = 'inline-block';
+                visibleCashText.innerText = 'Ocultar Saldo';
+                isCashVisible = true;
+            }
+        });
+    </script>
+</body>
+</html>
